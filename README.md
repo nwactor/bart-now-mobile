@@ -17,4 +17,4 @@ Ever wish you knew how long you had to catch the train? BART Now gives commuters
 
 ### Known Issues
 
-* Train time accuracy needs to be improved
+* Departure time accuracy needs to be improved
