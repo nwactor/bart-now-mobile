@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View, Animated, Dimensions } from 'react-native';
 import AppHeader from './AppHeader';
 import TrainListScroller from './TrainListScroller';
 import SettingsMenu from './SettingsMenu';
 
+const windowWidth = Dimensions.get('window').width;
+
 class MainScreen extends React.Component {
-	
-    constructor() {
-        super();
-        this.xPosition = new Animated.Value(1);
+    state = {
+        xPosition: new Animated.Value(1)
     }
 
     componentDidMount() {
@@ -17,7 +17,7 @@ class MainScreen extends React.Component {
 
     animateDrawerOpen() {
         Animated.timing(
-            this.xPosition,
+            this.state.xPosition,
             {
                 toValue: 1,
                 duration: 3000
@@ -27,25 +27,27 @@ class MainScreen extends React.Component {
 
     animateDrawerClose() {
         Animated.timing(
-            this.xPosition,
+            this.state.xPosition,
             {
                 toValue: 0,
-                duration: 3000
+                duration: 1000,
+                // useNativeDriver: true
             }
         ).start();
     }
 
 	render() {
         const trains = this.props.trains;
-        const objectMargin = this.xPosition.interpolate({
+        
+        const drawerTransform = this.state.xPosition.interpolate({
             inputRange: [0, 1],
-            outputRange: ['100%', '0%']
+            outputRange: [-1 * (windowWidth), 0]
         });
         
-        //there are some stupid hacks needed in life, and this is one of them.
-        //Reason: Animated's interoplate returns the string "0%" instead of 0%
-        const stringMargin = JSON.stringify(objectMargin);
-        const marginRight = stringMargin.slice(1, stringMargin.length - 1);
+        // //there are some stupid hacks needed in life, and this is one of them.
+        // //Reason: Animated's interoplate returns the string "0%" instead of 0%
+        // const stringMargin = JSON.stringify(objectMargin);
+        // const marginRight = stringMargin.slice(1, stringMargin.length - 1);
         
         return (
             <View style={styles.container}>
@@ -57,13 +59,13 @@ class MainScreen extends React.Component {
                 	trains={trains}
                 	onTrainSelect={this.props.onTrainSelect}
                 />
-                <View style={[
+                <Animated.View style={[
                         styles.animatedDrawer,
-                        {marginRight: marginRight}
+                        {transform: [{ translateX: drawerTransform }]}
                     ]}
                 >
                     <SettingsMenu/>
-                </View>
+                </Animated.View>
             </View>
         );
     }
