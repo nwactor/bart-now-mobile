@@ -12,10 +12,20 @@ class MainScreen extends React.Component {
     }
 
     componentDidMount() {
-       this.animateDrawerOpen();
+       this.animateDrawerClose();
     }
 
     animateDrawerOpen() {
+        Animated.timing(
+            this.xPosition,
+            {
+                toValue: 1,
+                duration: 3000
+            }
+        ).start();
+    }
+
+    animateDrawerClose() {
         Animated.timing(
             this.xPosition,
             {
@@ -25,15 +35,11 @@ class MainScreen extends React.Component {
         ).start();
     }
 
-    animateDrawerClose() {
-
-    }
-
 	render() {
         const trains = this.props.trains;
         const objectMargin = this.xPosition.interpolate({
             inputRange: [0, 1],
-            outputRange: ['0%', '100%']
+            outputRange: ['100%', '0%']
         });
         
         //there are some stupid hacks needed in life, and this is one of them.

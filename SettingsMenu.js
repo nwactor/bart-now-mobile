@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#524f7a'
     },
     headerText: {
-    	color: '#ffd65e'
+    	color: '#ffd65e',
+    	fontSize: 20
     }
 });
