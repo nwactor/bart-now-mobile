@@ -12,7 +12,7 @@ class MainScreen extends React.Component {
     }
 
     componentDidMount() {
-       this.animateDrawerClose();
+       // this.animateDrawerClose();
     }
 
     animateDrawerOpen() {
