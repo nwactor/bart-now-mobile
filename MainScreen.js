@@ -8,7 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 
 class MainScreen extends React.Component {
     state = {
-        xPosition: new Animated.Value(1)
+        settingMenuPosition: new Animated.Value(0)
     }
 
     componentDidMount() {
@@ -17,7 +17,7 @@ class MainScreen extends React.Component {
 
     animateDrawerOpen() {
         Animated.timing(
-            this.state.xPosition,
+            this.state.settingMenuPosition,
             {
                 toValue: 1,
                 duration: 3000
@@ -27,7 +27,7 @@ class MainScreen extends React.Component {
 
     animateDrawerClose() {
         Animated.timing(
-            this.state.xPosition,
+            this.state.settingMenuPosition,
             {
                 toValue: 0,
                 duration: 1000,
@@ -39,7 +39,7 @@ class MainScreen extends React.Component {
 	render() {
         const trains = this.props.trains;
         
-        const drawerTransform = this.state.xPosition.interpolate({
+        const drawerTransform = this.state.settingMenuPosition.interpolate({
             inputRange: [0, 1],
             outputRange: [-1 * (windowWidth), 0]
         });

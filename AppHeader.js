@@ -1,14 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import StationNames from "./static-data/StationNames";
 import StationDropdown from './StationDropdown';
+
+const windowWidth = Dimensions.get('window').width;
 
 class AppHeader extends React.Component {
 	render() {
         return (
             <View style={styles.header}>
-        		<Text style={styles.headerText}>{StationNames[this.props.currentStation]}</Text>
-        		<StationDropdown setCurrentStation={this.props.setCurrentStation}/>
+                <View style={{flex: 1, alignItems: 'center'}}>
+        		    <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+                </View>
+                <View style={{flex: 4, alignItems: 'center'}}>
+                    <Text style={styles.headerText}>{StationNames[this.props.currentStation]}</Text>
+                    <StationDropdown setCurrentStation={this.props.setCurrentStation}/>
+                </View>
+                <View style={{flex: 1, alignItems: 'center'}}>
+                    <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+                </View>
             </View>
         );
     }
@@ -19,10 +29,15 @@ const styles = StyleSheet.create({
     	flex: 0.15,
         backgroundColor: '#222',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: 'row'
     },
     headerText: {
     	color: 'white'
+    },
+    settingsButton: {
+        width: (windowWidth / 8),
+        height: (windowWidth / 8),
     }
 });
 
