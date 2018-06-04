@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import StationNames from "./static-data/StationNames";
 import StationDropdown from './StationDropdown';
 
@@ -10,14 +10,18 @@ class AppHeader extends React.Component {
         return (
             <View style={styles.header}>
                 <View style={{flex: 1, alignItems: 'center'}}>
-        		    <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+        		    <TouchableOpacity onPress={() => this.props.openSettingsPressed()}>
+                        <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+                    </TouchableOpacity>
                 </View>
                 <View style={{flex: 4, alignItems: 'center'}}>
                     <Text style={styles.headerText}>{StationNames[this.props.currentStation]}</Text>
                     <StationDropdown setCurrentStation={this.props.setCurrentStation}/>
                 </View>
                 <View style={{flex: 1, alignItems: 'center'}}>
-                    <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+                    <TouchableOpacity>
+                        <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
+                    </TouchableOpacity>
                 </View>
             </View>
         );

@@ -11,16 +11,12 @@ class MainScreen extends React.Component {
         settingMenuPosition: new Animated.Value(0)
     }
 
-    componentDidMount() {
-       // this.animateDrawerClose();
-    }
-
     animateDrawerOpen() {
         Animated.timing(
             this.state.settingMenuPosition,
             {
                 toValue: 1,
-                duration: 3000
+                duration: 500
             }
         ).start();
     }
@@ -30,10 +26,18 @@ class MainScreen extends React.Component {
             this.state.settingMenuPosition,
             {
                 toValue: 0,
-                duration: 1000,
+                duration: 500,
                 // useNativeDriver: true
             }
         ).start();
+    }
+
+    openSettingsPressed() {
+        this.animateDrawerOpen();
+    }
+
+    closeSettingsPressed() {
+        this.animateDrawerClose();
     }
 
 	render() {
@@ -54,6 +58,7 @@ class MainScreen extends React.Component {
                 <AppHeader
                     currentStation={this.props.currentStation}
                     setCurrentStation={this.props.setCurrentStation}
+                    openSettingsPressed={this.openSettingsPressed.bind(this)}
                 />
                 <TrainListScroller
                 	trains={trains}
@@ -64,7 +69,9 @@ class MainScreen extends React.Component {
                         {transform: [{ translateX: drawerTransform }]}
                     ]}
                 >
-                    <SettingsMenu/>
+                    <SettingsMenu
+                        closeSettingsPressed={this.closeSettingsPressed.bind(this)}
+                    />
                 </Animated.View>
             </View>
         );
