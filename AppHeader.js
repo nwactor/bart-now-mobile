@@ -16,7 +16,7 @@ class AppHeader extends React.Component {
                 </View>
                 <View style={{flex: 4, alignItems: 'center'}}>
                     <Text style={styles.headerText}>{StationNames[this.props.currentStation]}</Text>
-                    <StationDropdown setCurrentStation={this.props.setCurrentStation}/>
+                    <StationDropdown selectStation={this.props.setCurrentStation}/>
                 </View>
                 <View style={{flex: 1, alignItems: 'center'}}>
                     <TouchableOpacity>

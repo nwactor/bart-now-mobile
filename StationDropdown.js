@@ -13,14 +13,14 @@ class StationDropdown extends React.Component {
 		dropdownValue: "(view nearest station)"
 	};
 
-	handleStationSelect(stationName) {
-		this.setState({selectValue: stationName});
+	handleStationSelect(dropdownIndex) {
+		// this.setState({selectValue: dropdownIndex});
 
-		if(stationName !== "(view nearest station)") {
-			var stationAbbr = this.getStationAbbrFromName(stationName);
-			this.props.setCurrentStation(stationAbbr);
+		if(dropdownIndex !== '0') {
+			var stationAbbr = this.getStationAbbrFromName(dropdownIndex);
+			this.props.selectStation(stationAbbr);
 		} else {
-			this.props.setCurrentStation('');
+			this.props.selectStation('');
 		}
 	}
 
@@ -36,7 +36,7 @@ class StationDropdown extends React.Component {
 				return stationAbbrs[i];
 			}
 		}
-		console.log("Error: Station Not Found.");
+		console.log("Error: Station Not Found - " + stationName);
 	}
 
 	render() {

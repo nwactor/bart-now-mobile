@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
 import SocketIOClient from 'socket.io-client';
 import StationLocator from './helper-scripts/StationLocator';
 import MainScreen from './MainScreen';
@@ -10,7 +10,7 @@ export default class App extends React.Component {
         screen: 'MainScreen',
         trains: [],
         selectedTrain: null,
-        currentTransportation: 'walk',
+        currentTransportation: 'walking',
         currentStation: '',
         closestStation: '',
         clientLocation: null,
@@ -19,7 +19,7 @@ export default class App extends React.Component {
 
     componentDidMount() {
         this.configureWebSocket();
-        //this.loadUserPreferences();
+        this.loadUserPreferences();
         this.beginGeolocation();
     }
 
@@ -38,6 +38,21 @@ export default class App extends React.Component {
             // console.log(trains);
             this.setState({trains});
         });
+    }
+
+    async loadUserPreferences() {
+        var defaultTransportationPreference = await AsyncStorage.getItem('defaultTransportationPreference');
+        var defaultStationPreference = await AsyncStorage.getItem('defaultStationPreference');
+
+        if(defaultTransportationPreference !== null) {
+            this.setState({currentTransportation: defaultTransportationPreference});
+        }
+        if(defaultStationPreference !== null) {
+            this.setState({currentStation: defaultStationPreference}, () => {
+                this.socket.emit('stationRequested', this.state.currentStation);
+            });
+            
+        }
     }
 
     beginGeolocation() {
@@ -84,6 +99,10 @@ export default class App extends React.Component {
         }
     }
 
+    setCurrentTransportation(transportationMode) {
+        this.setState({currentTransportation: transportationMode});
+    }
+
     onTrainSelect(train) {
         this.setState({selectedTrain: train}, () => {
             //switch to the detail screen only once the train has been set
@@ -95,8 +114,7 @@ export default class App extends React.Component {
         this.setState({screen: "MainScreen"});
     }
 
-    // RETURN CURRENT SCREEN
-
+    // RETURNS CURRENT SCREEN
     renderCurrentScreen() {
         switch(this.state.screen) {
             
@@ -117,6 +135,7 @@ export default class App extends React.Component {
                         station={this.state.currentStation}
                         train={this.state.selectedTrain}
                         clientLocation={this.state.clientLocation}
+                        setCurrentTransportation={this.setCurrentTransportation.bind(this)}
                         backButtonPressed={this.backButtonPressed.bind(this)}
                     />
                 );
@@ -124,6 +143,7 @@ export default class App extends React.Component {
         }
     }
 
+    //The actual render function just returns whichever screen component the app should be on
     render() {
         return (this.renderCurrentScreen());
     }
