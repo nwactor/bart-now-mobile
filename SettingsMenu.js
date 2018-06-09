@@ -24,8 +24,6 @@ export default class SettingMenu extends React.Component {
     }
 
     setUserDefaultStation(station) {
-        // console.log("station " + station);
-
         AsyncStorage.setItem('defaultStationPreference', station);
         this.setState({defaultStationPreference: station});
     }
@@ -48,15 +46,30 @@ export default class SettingMenu extends React.Component {
         		<View style={{flex: 2}}>
         			<Text style={styles.optionText}>Transport Mode</Text>
         			<View style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
-        				<Image style={styles.transportationIcon} source={require("./assets/walk-icon.png")}
-                            onPress={() => this.setUserDefaultTransportation("walking")}
-                        />
-        				<Image style={styles.transportationIcon} source={require("./assets/bike-icon.png")}
-                            onPress={() => this.setUserDefaultTransportation("biking")}
-                        />
-        				<Image style={styles.transportationIcon} source={require("./assets/car-icon.png")}
-                            onPress={() => this.setUserDefaultTransportation("driving")}
-                        />
+        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("walking")}>
+                            <Image 
+                                style={this.state.defaultTransportationPreference === "walking" ? 
+                                    styles.highlightedTransportationIcon : 
+                                    styles.transportationIcon} 
+                                source={require("./assets/walk-icon.png")}
+                            />
+                        </TouchableOpacity>
+        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("biking")}>
+                            <Image 
+                                style={this.state.defaultTransportationPreference === "biking" ? 
+                                    styles.highlightedTransportationIcon : 
+                                    styles.transportationIcon} 
+                                source={require("./assets/bike-icon.png")}
+                            />
+                        </TouchableOpacity>
+        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("driving")}>
+                            <Image 
+                                style={this.state.defaultTransportationPreference === "driving" ? 
+                                    styles.highlightedTransportationIcon : 
+                                    styles.transportationIcon} 
+                                source={require("./assets/car-icon.png")}
+                            />
+                        </TouchableOpacity>
         			</View>
         		</View>
         		<View style={{flex: 2}}>
@@ -109,7 +122,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: '#fff',
         borderRadius: 5,
-        backgroundColor: "#7f8082"
+        backgroundColor: "#ffdb59"
     },
     closeButton: {
     	width: (windowWidth / 8),
