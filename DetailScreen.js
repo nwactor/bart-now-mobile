@@ -1,12 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
-import MapComponent from './MapComponent';
+import MapWebView from './MapWebView';
 import TrainPanel from './TrainPanel';
 import StationNames from "./static-data/StationNames";
 
 
 class DetailScreen extends React.Component {
 	
+    injectJS() {
+        return `
+                var clientLocation = ${this.props.clientLocation};
+                var targetStation = {name: downtown berkeley station};
+                var currentTravelMode = 'walking';
+                `;
+    }
+
 	render() {
         return (
             <View style={styles.container}>
@@ -14,10 +22,9 @@ class DetailScreen extends React.Component {
                 <View style={styles.detailHeader}>
                     <Text style={{color: 'white'}}>Route to {StationNames[this.props.station]}</Text>
                 </View>
-                <MapComponent
-                    latitude={Number(this.props.clientLocation.split(",")[0])}
-                    longitude={Number(this.props.clientLocation.split(",")[1].trim())}
-                    station={this.props.station}
+                <MapWebView
+                    source={require('./webview/map.html')}
+                    scrollEnabled={false}
                 />
                 <View style={styles.detailSection}>
                     <TrainPanel
