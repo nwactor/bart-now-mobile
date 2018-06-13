@@ -10,7 +10,7 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 * Detects the nearest station to the user and displays it by default
 * Navigation between main page and detail page
 * Map and Routing from the user's location to the chosen station
-* Option to set default station and travel mode to load whenever the app starts
+* Option to set default station and travel mode that load whenever the app starts
 
 ### Planned Features
 
