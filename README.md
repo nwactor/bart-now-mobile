@@ -15,7 +15,7 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 ### Planned Features
 
 * Predictions on whether or not the user will be able to catch a selected train, based on their mode of transport to the station
-* Display more information about a train when it is selected
+* Display more information about a train when it is selected; live countdown on detail page
 * Polished UI
 * Loading / Logo Screen
 
