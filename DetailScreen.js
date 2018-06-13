@@ -10,8 +10,8 @@ class DetailScreen extends React.Component {
     injectJS() {
         return `
                 var clientLocation = ${this.props.clientLocation};
-                var targetStation = {name: downtown berkeley station};
-                var currentTravelMode = 'walking';
+                var targetStation = {name: ${StationNames[this.props.station]};
+                var currentTransportation = ${this.props.currentTransportation};
                 `;
     }
 
@@ -25,6 +25,9 @@ class DetailScreen extends React.Component {
                 <MapWebView
                     source={require('./webview/map.html')}
                     scrollEnabled={false}
+                    clientLocation={this.props.clientLocation}
+                    targetStation={StationNames[this.props.station]}
+                    currentTransportation={this.props.currentTransportation}
                 />
                 <View style={styles.detailSection}>
                     <TrainPanel

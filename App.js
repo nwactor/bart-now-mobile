@@ -133,8 +133,9 @@ export default class App extends React.Component {
                 return(
                     <DetailScreen
                         station={this.state.currentStation}
-                        train={this.state.selectedTrain}
                         clientLocation={this.state.clientLocation}
+                        currentTransportation={this.state.currentTransportation}
+                        train={this.state.selectedTrain}
                         setCurrentTransportation={this.setCurrentTransportation.bind(this)}
                         backButtonPressed={this.backButtonPressed.bind(this)}
                     />
