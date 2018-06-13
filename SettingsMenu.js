@@ -51,7 +51,7 @@ export default class SettingMenu extends React.Component {
                                 style={this.state.defaultTransportationPreference === "walking" ? 
                                     styles.highlightedTransportationIcon : 
                                     styles.transportationIcon} 
-                                source={require("./assets/walk-icon.png")}
+                                source={require("./assets/walking-icon.png")}
                             />
                         </TouchableOpacity>
         				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("biking")}>
@@ -59,7 +59,7 @@ export default class SettingMenu extends React.Component {
                                 style={this.state.defaultTransportationPreference === "biking" ? 
                                     styles.highlightedTransportationIcon : 
                                     styles.transportationIcon} 
-                                source={require("./assets/bike-icon.png")}
+                                source={require("./assets/biking-icon.png")}
                             />
                         </TouchableOpacity>
         				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("driving")}>
@@ -67,7 +67,7 @@ export default class SettingMenu extends React.Component {
                                 style={this.state.defaultTransportationPreference === "driving" ? 
                                     styles.highlightedTransportationIcon : 
                                     styles.transportationIcon} 
-                                source={require("./assets/car-icon.png")}
+                                source={require("./assets/driving-icon.png")}
                             />
                         </TouchableOpacity>
         			</View>

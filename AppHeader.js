@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import StationNames from "./static-data/StationNames";
 import StationDropdown from './StationDropdown';
+import TransportSelector from './TransportSelector';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -19,9 +20,9 @@ class AppHeader extends React.Component {
                     <StationDropdown selectStation={this.props.setCurrentStation}/>
                 </View>
                 <View style={{flex: 1, alignItems: 'center'}}>
-                    <TouchableOpacity>
-                        <Image style={styles.settingsButton} source={require("./assets/cog.png")}/>
-                    </TouchableOpacity>
+                    <TransportSelector
+                        currentTransportation={"driving"}
+                    />
                 </View>
             </View>
         );
