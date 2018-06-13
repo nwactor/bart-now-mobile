@@ -2,6 +2,8 @@
 
 Ever wish you knew how long you had to catch the train? BART Now gives commuters access to the real-time state of their favorite BART Stations at the touch of a button.
 
+Visit the web demo at https://bart-now.herokuapp.com/.
+
 ### Current Features
 
 * Live feed departing trains for every station
