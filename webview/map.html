@@ -36,7 +36,7 @@
 		function calcRoute(directionsService, directionsDisplay) {
 			directionsService.route({
 			    origin: clientLocation,
-			    destination: targetStation,
+			    destination: targetStation + " bart station",
 			    travelMode: currentTransportation.toUpperCase()
 			  }, function(response, status) {
 			    if (status === 'OK') {
