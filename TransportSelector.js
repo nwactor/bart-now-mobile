@@ -9,12 +9,13 @@ const iconPaths = {
 
 class TransportSelector extends React.Component {
 	state = {
-		isOpen: true
+		isOpen: false
 	};
 
-	handleTouch() {
+	handleTouch(newMode) {
 		console.log(this.state.isOpen);
 		if(this.state.isOpen) {
+			this.props.setCurrentTransportation(newMode);
 			this.setState({isOpen: false});
 		} else {
 			this.setState({isOpen: true});
@@ -23,20 +24,20 @@ class TransportSelector extends React.Component {
 
 	renderOpen() {
 		return(
-			<View style={{width: '100%'}}>
-				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch()}>
+			<View style={{flex: 1, justifyContent: 'flex-start', width: '100%'}}>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("walking")}>
 					<Image
 						source={iconPaths["walking"]}
 						style={[styles.image, styles.dropdownImage]}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch()}>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("biking")}>
 					<Image
 						source={iconPaths["biking"]}
 						style={[styles.image, styles.dropdownImage]}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch()}>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("driving")}>
 					<Image
 						source={iconPaths["driving"]}
 						style={[styles.image, styles.dropdownImage]}
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     	borderRadius: 5,
     	backgroundColor: "#7f8082"
 	}, dropdownImage: {
-		height: "75%"
+		height: "85%"
 	}
 });
 

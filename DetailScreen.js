@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
+import TransportSelector from './TransportSelector';
 import MapWebView from './MapWebView';
 import TrainPanel from './TrainPanel';
 import StationNames from "./static-data/StationNames";
@@ -21,6 +22,10 @@ class DetailScreen extends React.Component {
                 <StatusBar/>
                 <View style={styles.detailHeader}>
                     <Text style={{color: 'white'}}>Route to {StationNames[this.props.station]}</Text>
+                    <TransportSelector
+                        currentTransportation={this.props.currentTransportation}
+                        setCurrentTransportation={this.props.setCurrentTransportation}
+                    />
                 </View>
                 <MapWebView
                     source={require('./webview/map.html')}
@@ -59,7 +64,8 @@ const styles = StyleSheet.create({
         height: '10%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#222'
+        backgroundColor: '#222',
+        zIndex: 1
     },
     detailSection: {
         height: '45%'
