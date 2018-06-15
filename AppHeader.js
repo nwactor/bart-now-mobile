@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#222',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        zIndex: 1
     },
     headerText: {
     	color: 'white'
