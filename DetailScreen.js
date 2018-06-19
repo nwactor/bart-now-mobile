@@ -21,11 +21,14 @@ class DetailScreen extends React.Component {
             <View style={styles.container}>
                 <StatusBar/>
                 <View style={styles.detailHeader}>
-                    <Text style={{color: 'white'}}>Route to {StationNames[this.props.station]}</Text>
-                    <TransportSelector
-                        currentTransportation={this.props.currentTransportation}
-                        setCurrentTransportation={this.props.setCurrentTransportation}
-                    />
+                    <View style={{flex: 1}}/>
+                    <Text style={{color: 'white', flex: 4}}>Route to {StationNames[this.props.station]}</Text>
+                    <View style={{flex: 1}}>
+                        <TransportSelector
+                            currentTransportation={this.props.currentTransportation}
+                            setCurrentTransportation={this.props.setCurrentTransportation}
+                        />
+                    </View>
                 </View>
                 <MapWebView
                     source={require('./webview/map.html')}
@@ -65,7 +68,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#222',
-        zIndex: 1
+        zIndex: 1,
+        flexDirection: 'row'
     },
     detailSection: {
         height: '45%'

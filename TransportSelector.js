@@ -13,7 +13,6 @@ class TransportSelector extends React.Component {
 	};
 
 	handleTouch(newMode) {
-		console.log(this.state.isOpen);
 		if(this.state.isOpen) {
 			this.props.setCurrentTransportation(newMode);
 			this.setState({isOpen: false});
