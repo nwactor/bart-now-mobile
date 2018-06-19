@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     container: {
         height: '100%',
         width: '100%',
-        backgroundColor: '#524f7a',
+        backgroundColor: '#524f7a'
     },
     headerSection: {
     	flex: 1, 
