@@ -7,14 +7,6 @@ import StationNames from "./static-data/StationNames";
 
 
 class DetailScreen extends React.Component {
-	
-    injectJS() {
-        return `
-                var clientLocation = ${this.props.clientLocation};
-                var targetStation = {name: ${StationNames[this.props.station]};
-                var currentTransportation = ${this.props.currentTransportation};
-                `;
-    }
 
 	render() {
         return (
