@@ -3,25 +3,31 @@
 <head>
 	<title></title>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpYGb8BVSnp_5KgwqPgZbsVnRWfT8NS5I"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<style type="text/css">
-		html, body, #map {
+		html, body {
 			height: 100%;
-			width: 100%;
+			
 		}
 		#map {
-			background-color: black;
+			height: 100%;
+			width: 100%;
 		}
 	</style>
 </head>
 <body>
 	<div id="map"></div>
+
 	<script type="text/javascript">
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer();
+		var distance;
+		var travelTime;
 
-		// var clientLocation = "oakland, ca";
-		// var targetStation = "rockridge bart";
-		// var currentTransportation = "DRIVING";
+		var clientLocation = "oakland, ca";
+		var targetStation = "rockridge bart";
+		var currentTransportation = "DRIVING";
 
 		function initMap() {
 			var mapOptions = {
@@ -47,8 +53,50 @@
 			  });
 		}
 
+		function getDistanceToStationsFromClient(targetStation) {
+			var service = new google.maps.DistanceMatrixService;
+			service.getDistanceMatrix({
+				origins: [clientLocation],
+				destinations: [targetStation + " bart station"],
+				travelMode: currentTransportation.toUpperCase(),
+				unitSystem: google.maps.UnitSystem.IMPERIAL,
+			}, function (response, status) {
+				if (status !== 'OK') {
+					console.log('Error was: ' + status);
+				} else {
+					console.log(response);
+					distance = response.rows[0].elements[0].distance.text;
+					travelTime = response.rows[0].elements[0].duration.text;
+				}
+			});
+		}
+		
+	
 		initMap();
 		calcRoute(directionsService, directionsDisplay);
+		getDistanceToStationsFromClient(targetStation);
+		
+		
+
+		
+
+		
+		// to determine a rough chance of being able to catch the selected train
+		// if (travelTimeInt > selectedTrain.eta + 1) {
+		// 	chance = "low";
+		// 	$("#estimatedChance").html(
+		// 		'Chance of catching this train: <span class="chance" id=' + chance + '>LOW</span>');
+		// }
+		// else if (travelTimeInt >= selectedTrain.eta - 1) {
+		// 	chance = "medium";
+		// 	$("#estimatedChance").html(
+		// 		'Catch it? <span class="chance" id=' + chance + '>cutting it close...</span>');
+		// }
+		// else {
+		// 	chance = "high";
+		// 	$("#estimatedChance").html(
+		// 		'Chance of catching this train: <span class="chance" id=' + chance + '>high</span>');
+		// }
 	</script>
 </body>
 </html>
