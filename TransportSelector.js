@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 
 const iconPaths = {
 	walking: require("./assets/walking-icon.png"),
@@ -12,23 +12,37 @@ class TransportSelector extends React.Component {
 		isOpen: false
 	};
 
+	handleTouch(newMode) {
+		if(this.state.isOpen) {
+			this.props.setCurrentTransportation(newMode);
+			this.setState({isOpen: false});
+		} else {
+			this.setState({isOpen: true});
+		}
+	}
 
 	renderOpen() {
 		return(
-			<TouchableOpacity>
-				<Image
-					// source={}
-					// style={}
-				/>
-				<Image
-					// source={}
-					// style={}
-				/>
-				<Image
-					// source={}
-					// style={}
-				/>
-			</TouchableOpacity>
+			<View style={{flex: 1, justifyContent: 'flex-start', width: '100%'}}>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("walking")}>
+					<Image
+						source={iconPaths["walking"]}
+						style={[styles.image, styles.dropdownImage]}
+					/>
+				</TouchableOpacity>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("biking")}>
+					<Image
+						source={iconPaths["biking"]}
+						style={[styles.image, styles.dropdownImage]}
+					/>
+				</TouchableOpacity>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("driving")}>
+					<Image
+						source={iconPaths["driving"]}
+						style={[styles.image, styles.dropdownImage]}
+					/>
+				</TouchableOpacity>
+			</View>
 		);
 	}
 
@@ -36,7 +50,7 @@ class TransportSelector extends React.Component {
 		var activeIconPath = iconPaths[this.props.currentTransportation];
 
 		return(
-			<TouchableOpacity>
+			<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch()}>
 				<Image
 					source={activeIconPath}
 					style={styles.image}
@@ -60,13 +74,15 @@ class TransportSelector extends React.Component {
 
 const styles = StyleSheet.create({
 	image: {
-		// width: (windowWidth / 3.5),
-    	// height: (windowWidth / 3.5),
+		width: '95%', //(windowWidth / 3.5),
+    	height: '85%', //(windowWidth / 3.5),
     	padding: 5,
     	borderWidth: 3,
     	borderColor: '#fff',
     	borderRadius: 5,
     	backgroundColor: "#7f8082"
+	}, dropdownImage: {
+		height: "85%"
 	}
 });
 
