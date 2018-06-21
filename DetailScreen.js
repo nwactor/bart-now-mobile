@@ -60,17 +60,14 @@ class DetailScreen extends React.Component {
                         travelTime={this.state.travelTime}
                     />
                 </View>
-           
-                
-
-                <TouchableOpacity 
-                    style={{height: '5%'}}
-                    onPress={() => this.props.backButtonPressed()}
-                >
-                    <View style={styles.backButton}>
-                        <Text>Back</Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={{height: '5%', alignItems: 'center'}}>
+                    <TouchableOpacity 
+                        style={styles.backButton}
+                        onPress={() => this.props.backButtonPressed()}
+                    >
+                        <Text style={{color: 'white'}}>Back</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -79,7 +76,7 @@ class DetailScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d3d3d3'
+        backgroundColor: '#d3d3d3',
     },
     detailHeader: {
         height: '10%',
@@ -94,8 +91,14 @@ const styles = StyleSheet.create({
         // height: '45%'
     },
     backButton: {
-        backgroundColor: "#ffffff",
-        height: '100%'
+        backgroundColor: "#A9A9A9",
+        height: '100%',
+        width: '90%',
+        borderRadius: 10,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 
