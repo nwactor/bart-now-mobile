@@ -3,12 +3,28 @@ import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-nativ
 import TransportSelector from './TransportSelector';
 import MapWebView from './MapWebView';
 import TrainPanel from './TrainPanel';
+import StationPanel from './StationPanel';
 import StationNames from "./static-data/StationNames";
 
 
 class DetailScreen extends React.Component {
 
+    state = {
+        distance: 0,
+        travelTime:0 
+    }
+
+    onMessage(event) {
+        this.setState({ distance: event.nativeEvent.data.split(',')[0] });
+        console.log("distance: " + event.nativeEvent.data.split(',')[0]);
+        this.setState({ travelTime: event.nativeEvent.data.split(',')[1]});
+        console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+    }
 	render() {
+        const injectedScript = () => {
+            window.postMessage(message, "*");
+            window.postMessage = window.originalPostMessage || window.postMessage;
+        }
         return (
             <View style={styles.container}>
                 <StatusBar/>
@@ -24,10 +40,12 @@ class DetailScreen extends React.Component {
                 </View>
                 <MapWebView
                     source={require('./webview/map.html')}
+                    injectedJavaScript={`(${String(injectedScript)})()`}
                     scrollEnabled={false}
                     clientLocation={this.props.clientLocation}
                     targetStation={StationNames[this.props.station]}
                     currentTransportation={this.props.currentTransportation}
+                    onMessage={this.onMessage.bind(this)}
                 />
                 <View style={styles.detailSection}>
                     <TrainPanel
@@ -36,7 +54,15 @@ class DetailScreen extends React.Component {
                         minutes={this.props.train.minutes}
                         delay={this.props.train.delay}
                     />
+
+                    <StationPanel
+                        distance={this.state.distance}
+                        travelTime={this.state.travelTime}
+                    />
                 </View>
+           
+                
+
                 <TouchableOpacity 
                     style={{height: '5%'}}
                     onPress={() => this.props.backButtonPressed()}
@@ -64,7 +90,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     detailSection: {
-        height: '45%'
+        flex: 1,
+        // height: '45%'
     },
     backButton: {
         backgroundColor: "#ffffff",
