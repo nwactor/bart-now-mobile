@@ -7,7 +7,7 @@ class TrainListScroller extends React.Component {
 		scrollViewHeight: null
 	}
 
-	//All of the 10s in parseInt are radixes, they say that we're parsing a base 10 int
+	//All of the 10s in parseInt are radixes, ie they specify that we're parsing a base 10 int
 	sortTrains(trains) {
 		trains.sort((train1, train2) => {
 			var train1ETA = parseInt(parseInt(train1.minutes.trim(), 10) + parseInt(train1.delay.trim(), 10), 10); 
