@@ -10,15 +10,17 @@ import StationNames from "./static-data/StationNames";
 class DetailScreen extends React.Component {
 
     state = {
-        distance: 0,
-        travelTime:0 
+        distance: 'updating',
+        travelTime:'updating'
     }
 
     onMessage(event) {
-        this.setState({ distance: event.nativeEvent.data.split(',')[0] });
-        console.log("distance: " + event.nativeEvent.data.split(',')[0]);
-        this.setState({ travelTime: event.nativeEvent.data.split(',')[1]});
-        console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+        if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
+            this.setState({ distance: event.nativeEvent.data.split(',')[0] });
+            console.log("distance: " + event.nativeEvent.data.split(',')[0]);
+            this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
+            console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+        }
     }
 	render() {
         const injectedScript = () => {
