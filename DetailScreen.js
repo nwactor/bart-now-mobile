@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
+import StatusBarBuffer from './StatusBarBuffer';
 import TransportSelector from './TransportSelector';
 import MapWebView from './MapWebView';
 import TrainPanel from './TrainPanel';
@@ -16,10 +17,11 @@ class DetailScreen extends React.Component {
 
     onMessage(event) {
         this.setState({ distance: event.nativeEvent.data.split(',')[0] });
-        console.log("distance: " + event.nativeEvent.data.split(',')[0]);
         this.setState({ travelTime: event.nativeEvent.data.split(',')[1]});
-        console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+        // console.log("distance: " + event.nativeEvent.data.split(',')[0]);
+        // console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
     }
+
 	render() {
         const injectedScript = () => {
             window.postMessage(message, "*");
@@ -27,7 +29,8 @@ class DetailScreen extends React.Component {
         }
         return (
             <View style={styles.container}>
-                <StatusBar/>
+                <StatusBar  barStyle={"light-content"}/>
+                <StatusBarBuffer/>
                 <View style={styles.detailHeader}>
                     <View style={{flex: 1}}/>
                     <Text style={{color: 'white', flex: 4}}>Route to {StationNames[this.props.station]}</Text>

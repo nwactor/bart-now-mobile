@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Animated, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Animated, Dimensions, StatusBar } from 'react-native';
+import StatusBarBuffer from './StatusBarBuffer';
 import AppHeader from './AppHeader';
 import TrainListScroller from './TrainListScroller';
 import SettingsMenu from './SettingsMenu';
@@ -55,6 +56,8 @@ class MainScreen extends React.Component {
         
         return (
             <View style={styles.container}>
+                <StatusBar barStyle={"light-content"}/>
+                <StatusBarBuffer/>
                 <AppHeader
                     currentStation={this.props.currentStation}
                     setCurrentStation={this.props.setCurrentStation}
