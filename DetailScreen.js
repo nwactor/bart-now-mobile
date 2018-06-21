@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, StatusBar } from 'react-native';
+import StatusBarBuffer from './StatusBarBuffer';
 import TransportSelector from './TransportSelector';
 import MapWebView from './MapWebView';
 import TrainPanel from './TrainPanel';
@@ -15,13 +16,21 @@ class DetailScreen extends React.Component {
     }
 
     onMessage(event) {
+<<<<<<< HEAD
         if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
             this.setState({ distance: event.nativeEvent.data.split(',')[0] });
             console.log("distance: " + event.nativeEvent.data.split(',')[0]);
             this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
             console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
         }
+=======
+        this.setState({ distance: event.nativeEvent.data.split(',')[0] });
+        this.setState({ travelTime: event.nativeEvent.data.split(',')[1]});
+        // console.log("distance: " + event.nativeEvent.data.split(',')[0]);
+        // console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+>>>>>>> 0b08cfded436eeaf102986971df299b0866c517f
     }
+
 	render() {
         const injectedScript = () => {
             window.postMessage(message, "*");
@@ -29,7 +38,8 @@ class DetailScreen extends React.Component {
         }
         return (
             <View style={styles.container}>
-                <StatusBar/>
+                <StatusBar  barStyle={"light-content"}/>
+                <StatusBarBuffer/>
                 <View style={styles.detailHeader}>
                     <View style={{flex: 1}}/>
                     <Text style={{color: 'white', flex: 4}}>Route to {StationNames[this.props.station]}</Text>
@@ -62,17 +72,14 @@ class DetailScreen extends React.Component {
                         travelTime={this.state.travelTime}
                     />
                 </View>
-           
-                
-
-                <TouchableOpacity 
-                    style={{height: '5%'}}
-                    onPress={() => this.props.backButtonPressed()}
-                >
-                    <View style={styles.backButton}>
-                        <Text>Back</Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={{height: '5%', alignItems: 'center'}}>
+                    <TouchableOpacity 
+                        style={styles.backButton}
+                        onPress={() => this.props.backButtonPressed()}
+                    >
+                        <Text style={{color: 'white'}}>Back</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -81,7 +88,7 @@ class DetailScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d3d3d3'
+        backgroundColor: '#d3d3d3',
     },
     detailHeader: {
         height: '10%',
@@ -96,8 +103,14 @@ const styles = StyleSheet.create({
         // height: '45%'
     },
     backButton: {
-        backgroundColor: "#ffffff",
-        height: '100%'
+        backgroundColor: "#A9A9A9",
+        height: '100%',
+        width: '90%',
+        borderRadius: 10,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

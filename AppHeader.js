@@ -17,7 +17,12 @@ class AppHeader extends React.Component {
                 </View>
                 <View style={{flex: 4, alignItems: 'center'}}>
                     <Text style={styles.headerText}>{StationNames[this.props.currentStation]}</Text>
-                    <StationDropdown selectStation={this.props.setCurrentStation}/>
+                    <View style={{width: '80%'}}>
+                        <StationDropdown
+                            selectStation={this.props.setCurrentStation}
+                            currentStation={StationNames[this.props.currentStation]}
+                        />
+                    </View>
                 </View>
                 <View style={{flex: 1, alignItems: 'center'}}>
                     {/*
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     headerText: {
-    	color: 'white'
+    	color: 'white',
     },
     settingsButton: {
         width: (windowWidth / 8),
