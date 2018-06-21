@@ -11,19 +11,21 @@ class StationPanel extends React.Component {
 								
 								<View style={styles.infoRow}>
 										<Text style={styles.text}> Distance to BART Station: </Text>
-
-												<View style={styles.distance}> 
+												<View style={styles.inputRow}> 
 														<Text> {this.props.distance} </Text>
 												</View>
 								</View>
 											
-								<Text style={styles.text}>
-										Estimated Travel Time: {this.props.travelTime}
-								</Text>
+								<View style={styles.infoRow}>
+										<Text style={styles.text}> Estimated Travel Time: </Text>
+												<View style={styles.inputRow}>
+														<Text> {this.props.travelTime} </Text>
+												</View>
+								</View>
 									
 						</View>
 				);
-			}
+		}
 }
 
 const styles = StyleSheet.create({
@@ -41,20 +43,18 @@ const styles = StyleSheet.create({
 		paddingTop: 10
 	},
 	infoRow: {
-		flexDirection: 'row'
+		flexDirection: 'row',
+		margin: 12
 	},
 	text: {
 		// height: '10%',
 		// marginLeft: '5%'
 	},
-	distance:{
-
+	inputRow:{
+		marginTop: -2,
 		backgroundColor: '#f7f8f9',
 		borderWidth: 2,
 		borderRadius: 10,
-
-
-
 	}
 });
 
