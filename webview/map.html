@@ -24,6 +24,7 @@
 		var directionsDisplay = new google.maps.DirectionsRenderer();
 		var distance;
 		var travelTime;
+		var message;
 
 		var clientLocation = "oakland, ca";
 		var targetStation = "rockridge bart";
@@ -64,9 +65,9 @@
 				if (status !== 'OK') {
 					console.log('Error was: ' + status);
 				} else {
-					console.log(response);
 					distance = response.rows[0].elements[0].distance.text;
 					travelTime = response.rows[0].elements[0].duration.text;
+					message = distance + ',' + travelTime;
 				}
 			});
 		}
@@ -75,6 +76,7 @@
 		initMap();
 		calcRoute(directionsService, directionsDisplay);
 		getDistanceToStationsFromClient(targetStation);
+	
 		
 		
 
