@@ -36,7 +36,7 @@ class TrainListScroller extends React.Component {
 		const scrollViewHeight = this.state.scrollViewHeight;
         return (
             <View style={styles.traintainer} onLayout={this.handleLayout.bind(this)}>
-	            <ScrollView >
+	            <ScrollView>
 	        		{trains.map((train, index) =>
 				        <TrainPanel
 				          	key={index}

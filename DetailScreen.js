@@ -33,7 +33,7 @@ class DetailScreen extends React.Component {
                 <StatusBarBuffer/>
                 <View style={styles.detailHeader}>
                     <View style={{flex: 1}}/>
-                    <Text style={{color: 'white', flex: 4}}>Route to {StationNames[this.props.station]}</Text>
+                    <Text style={styles.headerText}>Route to <Text style={{fontWeight: 'bold'}}>{StationNames[this.props.station]}</Text></Text>
                     <View style={{flex: 1}}>
                         <TransportSelector
                             currentTransportation={this.props.currentTransportation}
@@ -88,6 +88,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#222',
         zIndex: 1,
         flexDirection: 'row'
+    },
+    headerText: {
+        color: 'white',
+        flex: 4,
+        fontSize: 20,
+        textAlign: 'center'
     },
     detailSection: {
        flex: 1
