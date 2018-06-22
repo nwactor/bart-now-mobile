@@ -11,8 +11,8 @@ import StationNames from "./static-data/StationNames";
 class DetailScreen extends React.Component {
 
     state = {
-        distance: 'updating',
-        travelTime:'updating'
+        distance: 'Updating',
+        travelTime:'Updating',
     }
 
     onMessage(event) {
@@ -90,8 +90,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     detailSection: {
-        flex: 1,
-        // height: '45%'
+       flex: 1
     },
     backButton: {
         backgroundColor: "#A9A9A9",
