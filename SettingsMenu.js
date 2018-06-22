@@ -38,7 +38,7 @@ export default class SettingMenu extends React.Component {
         	<View style={styles.container}>
         		<View style={styles.headerSection}>
         			<TouchableOpacity onPress={() => this.props.closeSettingsPressed()} style={{flex: 1}}>
-        				<Image style={styles.closeButton} source={require("./assets/cog.png")}/>
+        				<Image style={styles.closeButton} source={require("./assets/drawer-icon.png")}/>
         			</TouchableOpacity>
         			<Text style={styles.headerText}>Your Defaults</Text>
         			<View style={{flex: 1}}/>

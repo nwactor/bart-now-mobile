@@ -56,6 +56,8 @@ class StationDropdown extends React.Component {
 const styles = StyleSheet.create({
     dropdownButton: {
     	width: '100%',
+        height: '100%',
+        justifyContent: 'center',
     	backgroundColor: 'white',
     	borderStyle: 'solid',
     	borderWidth: 1,
@@ -63,7 +65,8 @@ const styles = StyleSheet.create({
     	borderRadius: 5
     },
     buttonText: {
-    	textAlign: 'center'
+    	textAlign: 'center',
+        fontSize: 15
     },
     dropdown: {
     	width: '100%'
