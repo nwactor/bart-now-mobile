@@ -11,15 +11,15 @@ import StationNames from "./static-data/StationNames";
 class DetailScreen extends React.Component {
 
     state = {
-        distance: 'updating',
-        travelTime:'updating'
+        distance: 'Updating',
+        travelTime:'Updating',
     }
 
     onMessage(event) {
-        this.setState({ distance: event.nativeEvent.data.split(',')[0] });
-        this.setState({ travelTime: event.nativeEvent.data.split(',')[1]});
-        // console.log("distance: " + event.nativeEvent.data.split(',')[0]);
-        // console.log("travelTime: " + event.nativeEvent.data.split(',')[1]);
+        if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
+            this.setState({ distance: event.nativeEvent.data.split(',')[0] });
+            this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
+        }
     }
 
 	render() {
@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     detailSection: {
-        flex: 1,
-        // height: '45%'
+       flex: 1
     },
     backButton: {
         backgroundColor: "#A9A9A9",

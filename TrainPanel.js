@@ -35,11 +35,11 @@ class TrainPanel extends React.Component {
 	            	style={[styles.TrainPanel, {height: (this.props.scrollViewHeight ? .13 * this.props.scrollViewHeight : 50)}] }
 	            >
 	        		<View style={styles.row1}>
-	        			<Text>{this.props.destination}</Text>
+								<Text style={styles.destination}>{this.props.destination}</Text>
 	        		</View>
 	        		<View style={styles.row2}>
 	        			<View style={ [styles.colorStripe, { backgroundColor: this.props.color }] }/>
-	        			<Text>{this.getTimeRemaining()}</Text>
+									<Text style={styles.time}>{this.getTimeRemaining()}</Text>
 	        		</View>
 	            </View>
             </TouchableOpacity>
@@ -53,25 +53,35 @@ const styles = StyleSheet.create({
 		backgroundColor: '#f7f8f9',
 		borderWidth: 1,
 		borderRadius: 10,
-		marginTop: 2,
+		marginTop: 4,
 		marginBottom: 2,
 		marginLeft: 4,
 		marginRight: 8
 	},
 	row1: {
 		height: '40%',
-		marginLeft: '5%'
+		marginLeft: '5%',
+		marginTop: 10,
+		marginBottom: 5,
 	},
 	row2: {
 		height: '50%',
 		marginLeft: '5%',
-		flexDirection: 'row'
+		flexDirection: 'row',
+		marginBottom: 10,
 	},
 	colorStripe: {
 		width: '40%',
 		height: 10,
 		borderRadius: 20,
 		marginRight: '5%'
+	},
+	destination: {
+		fontSize: 16,
+	},
+	time: {
+		fontSize: 16,
+		marginTop: -4,
 	}
 });
 
