@@ -74,7 +74,7 @@ export default class SettingMenu extends React.Component {
         		</View>
         		<View style={{flex: 2}}>
         			<Text style={styles.optionText}>{`Station: ${StationNames[this.state.defaultStationPreference] || 'Nearest'}`}</Text>
-        			<View style={{display: "flex", justifyContent: "center", width: "40%"}}>
+        			<View style={{width: "60%", height: '10%'}}>
         				<StationDropdown 
                             selectStation={this.setUserDefaultStation.bind(this)}
                             currentStation={this.props.currentStation}
