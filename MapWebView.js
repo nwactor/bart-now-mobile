@@ -12,12 +12,23 @@ class MapWebView extends reactNative.WebView {
 	}
 
 	componentWillUpdate(nextProps) {
-		this.injectJavaScript(`
-			clientLocation = "${nextProps.clientLocation}";
-			targetStation = "${nextProps.targetStation}";
-			currentTransportation = "${nextProps.currentTransportation}";
-			calcRoute(directionsService, directionsDisplay);
-		`);
+		// this.injectJavaScript(`
+ 	// 		clientLocation = "${nextProps.clientLocation}";
+ 	// 		targetStation = "${nextProps.targetStation}";
+ 	// 		currentTransportation = "${nextProps.currentTransportation}";
+ 	// 		calcRoute(directionsService, directionsDisplay);
+ 	// 	`);
+		console.log(nextProps.currentTransportation + " vs old: " + this.props.currentTransportation);
+		if(this.props.targetStation !== nextProps.targetStation || 
+			this.props.currentTransportation != nextProps.currentTransportation ||
+			this.props.clientLocation !== nextProps.clientLocation) {
+				this.injectJavaScript(`
+					clientLocation = "${nextProps.clientLocation}";
+					targetStation = "${nextProps.targetStation}";
+					currentTransportation = "${nextProps.currentTransportation}";
+					calcRoute(directionsService, directionsDisplay);
+				`);
+		}
 	}
 }
 

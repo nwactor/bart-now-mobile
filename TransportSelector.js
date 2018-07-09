@@ -30,7 +30,7 @@ class TransportSelector extends React.Component {
 						style={[styles.image, styles.dropdownImage]}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("biking")}>
+				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("bicycling")}>
 					<Image
 						source={iconPaths["biking"]}
 						style={[styles.image, styles.dropdownImage]}

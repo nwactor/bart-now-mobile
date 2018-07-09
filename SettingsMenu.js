@@ -54,9 +54,9 @@ export default class SettingMenu extends React.Component {
                                 source={require("./assets/walking-icon.png")}
                             />
                         </TouchableOpacity>
-        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("biking")}>
+        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("bicycling")}>
                             <Image 
-                                style={this.state.defaultTransportationPreference === "biking" ? 
+                                style={this.state.defaultTransportationPreference === "bicycling" ? 
                                     styles.highlightedTransportationIcon : 
                                     styles.transportationIcon} 
                                 source={require("./assets/biking-icon.png")}
