@@ -25,3 +25,4 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 * Departure times may need to update more frequently (actively being tested)
 * Walking directions don't load
 * Train Panel size flashes when back button is pressed
+* Travel time doesn't update when transportation mode changes

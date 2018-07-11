@@ -16,6 +16,7 @@ class DetailScreen extends React.Component {
     }
 
     onMessage(event) {
+        console.log(event.nativeEvent.data);
         if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
             this.setState({ distance: event.nativeEvent.data.split(',')[0] });
             this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
