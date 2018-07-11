@@ -57,13 +57,12 @@ class DetailScreen extends React.Component {
                         minutes={this.props.train.minutes}
                         delay={this.props.train.delay}
                     />
-
                     <StationPanel
                         distance={this.state.distance}
                         travelTime={this.state.travelTime}
                     />
                 </View>
-                <View style={{height: '5%', alignItems: 'center'}}>
+                <View style={styles.backWrapper}>
                     <TouchableOpacity 
                         style={styles.backButton}
                         onPress={() => this.props.backButtonPressed()}
@@ -96,12 +95,22 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     detailSection: {
-       flex: 1
+       flex: 1,
+       marginLeft: 4,
+       marginRight: 4
+    },
+    backWrapper: {
+        height: '7%', 
+        alignItems: 'center', 
+        marginLeft: 4, 
+        marginRight: 4, 
+        marginTop: 2, 
+        marginBottom: 2,
     },
     backButton: {
         backgroundColor: "#A9A9A9",
         height: '100%',
-        width: '90%',
+        width: '100%',
         borderRadius: 10,
         borderColor: 'white',
         borderWidth: 1,

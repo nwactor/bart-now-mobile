@@ -55,8 +55,6 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		marginTop: 4,
 		marginBottom: 2,
-		marginLeft: 4,
-		marginRight: 8
 	},
 	row1: {
 		height: '40%',

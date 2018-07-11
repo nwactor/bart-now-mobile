@@ -4,40 +4,34 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 class StationPanel extends React.Component {
 
 
-		render() {
-				return (
-						<View style = {styles.station}>
-								
-								<View style={styles.infoRow}>
-										<Text style={styles.text}> Distance to BART Station: </Text>
-												<View style={styles.distanceRow}> 
-														<Text style={styles.distance}> {this.props.distance} </Text>
-												</View>
-								</View>
-											
-								<View style={styles.infoRow}>
-										<Text style={styles.text}> Estimated Travel Time: </Text>
-												<View style={styles.travelRow}>
-														<Text style={styles.travelTime}> {this.props.travelTime} </Text>
-												</View>
-								</View>
-									
+	render() {
+		return (
+			<View style = {styles.panel}>
+				<View style={styles.infoRow}>
+					<Text style={styles.text}> Distance to BART Station: </Text>
+						<View style={styles.distanceRow}> 
+							<Text style={styles.distance}> {this.props.distance} </Text>
 						</View>
-				);
-		}
+				</View>
+				<View style={styles.infoRow}>
+					<Text style={styles.text}> Estimated Travel Time: </Text>
+						<View style={styles.travelRow}>
+							<Text style={styles.travelTime}> {this.props.travelTime} </Text>
+						</View>
+				</View>
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
-	station: {
+	panel: {
 		flex: 1,
-		height: '10%',
 		backgroundColor: "#A9A9A9",
 		borderWidth: 1,
 		borderRadius: 10,
 		marginTop: 2,
 		marginBottom: 2,
-		marginLeft: 4,
-		marginRight: 8,
 	},
 	infoRow: {
 		flexDirection: 'row',
