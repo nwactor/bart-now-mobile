@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 
 const iconPaths = {
 	walking: require("./assets/walking-icon.png"),
-	biking: require("./assets/biking-icon.png"),
+	bicycling: require("./assets/biking-icon.png"),
 	driving: require("./assets/driving-icon.png")
 }
 
@@ -32,7 +32,7 @@ class TransportSelector extends React.Component {
 				</TouchableOpacity>
 				<TouchableOpacity style={{width: "100%"}} onPress={() => this.handleTouch("bicycling")}>
 					<Image
-						source={iconPaths["biking"]}
+						source={iconPaths["bicycling"]}
 						style={[styles.image, styles.dropdownImage]}
 					/>
 				</TouchableOpacity>
