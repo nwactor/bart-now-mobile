@@ -135,8 +135,8 @@ export default class App extends React.Component {
                         station={this.state.currentStation}
                         clientLocation={this.state.clientLocation}
                         currentTransportation={this.state.currentTransportation}
-                        train={this.state.selectedTrain}
                         setCurrentTransportation={this.setCurrentTransportation.bind(this)}
+                        train={this.state.selectedTrain}
                         backButtonPressed={this.backButtonPressed.bind(this)}
                     />
                 );

@@ -10,12 +10,11 @@ Object.values(StationNames).forEach(name => {
 
 class StationDropdown extends React.Component {
 	state = {
-		dropdownValue: "(view nearest station)"
+		defaultValue: "(view nearest station)",
+		defaultIndex: 0
 	};
 
 	handleStationSelect(dropdownIndex) {
-		// this.setState({selectValue: dropdownIndex});
-
 		if(dropdownIndex !== '0') {
 			var stationAbbr = this.getStationAbbrFromName(dropdownIndex);
 			this.props.selectStation(stationAbbr);
@@ -42,9 +41,12 @@ class StationDropdown extends React.Component {
 	render() {
         return (
     		<ModalDropdown 
-    			defaultValue={this.state.dropdownValue}
+    			defaultValue={this.props.currentStation || this.state.defaultValue}
     			options={stationOptions}
     			style={styles.dropdownButton}
+    			textStyle={styles.buttonText}
+    			dropdownStyle={styles.dropdown}
+    			dropdownTextHighlightStyle={styles.selectedOption}
     			onSelect={this.handleStationSelect.bind(this)}
     		/>
         );
@@ -53,11 +55,24 @@ class StationDropdown extends React.Component {
 
 const styles = StyleSheet.create({
     dropdownButton: {
+    	width: '100%',
+        height: '100%',
+        justifyContent: 'center',
     	backgroundColor: 'white',
     	borderStyle: 'solid',
     	borderWidth: 1,
     	borderColor: 'gray',
-    	borderRadius: 2
+    	borderRadius: 5
+    },
+    buttonText: {
+    	textAlign: 'center',
+        fontSize: 15
+    },
+    dropdown: {
+    	width: '100%'
+    },
+    selectedOption: {
+   		backgroundColor: '#ffdb59'
     }
 });
 

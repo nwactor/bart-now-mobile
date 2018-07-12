@@ -8,9 +8,9 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 
 * Live feed departing trains for every station
 * Detects the nearest station to the user and displays it by default
-* Navigation between main page and detail page
-* Map and Routing from the user's location to the chosen station
+* Map and Routing from the user's location to the chosen station, includes distance and travel time
 * Option to set default station and travel mode that load whenever the app starts
+* Choose between walking, bicycling, and driving directions
 
 ### Planned Features
 
@@ -18,8 +18,11 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 * Display more information about a train when it is selected; live countdown on detail page
 * Polished UI
 * Loading / Logo Screen
+* Loading Indicator for train list
 
 ### Known Issues
 
-* Departure time accuracy needs to be improved
+* Departure times may need to update more frequently (actively being tested)
+* Walking directions don't load
 * Train Panel size flashes when back button is pressed
+* Travel time doesn't update when transportation mode changes

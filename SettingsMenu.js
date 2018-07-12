@@ -38,7 +38,7 @@ export default class SettingMenu extends React.Component {
         	<View style={styles.container}>
         		<View style={styles.headerSection}>
         			<TouchableOpacity onPress={() => this.props.closeSettingsPressed()} style={{flex: 1}}>
-        				<Image style={styles.closeButton} source={require("./assets/cog.png")}/>
+        				<Image style={styles.closeButton} source={require("./assets/drawer-icon.png")}/>
         			</TouchableOpacity>
         			<Text style={styles.headerText}>Your Defaults</Text>
         			<View style={{flex: 1}}/>
@@ -54,9 +54,9 @@ export default class SettingMenu extends React.Component {
                                 source={require("./assets/walking-icon.png")}
                             />
                         </TouchableOpacity>
-        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("biking")}>
+        				<TouchableOpacity onPress={() => this.setUserDefaultTransportation("bicycling")}>
                             <Image 
-                                style={this.state.defaultTransportationPreference === "biking" ? 
+                                style={this.state.defaultTransportationPreference === "bicycling" ? 
                                     styles.highlightedTransportationIcon : 
                                     styles.transportationIcon} 
                                 source={require("./assets/biking-icon.png")}
@@ -74,8 +74,11 @@ export default class SettingMenu extends React.Component {
         		</View>
         		<View style={{flex: 2}}>
         			<Text style={styles.optionText}>{`Station: ${StationNames[this.state.defaultStationPreference] || 'Nearest'}`}</Text>
-        			<View style={{display: "flex", justifyContent: "center", width: "40%"}}>
-        				<StationDropdown selectStation={this.setUserDefaultStation.bind(this)}/>
+        			<View style={{width: "60%", height: '10%'}}>
+        				<StationDropdown 
+                            selectStation={this.setUserDefaultStation.bind(this)}
+                            currentStation={this.props.currentStation}
+                        />
         			</View>
         		</View>
         	</View>
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     container: {
         height: '100%',
         width: '100%',
-        backgroundColor: '#524f7a',
+        backgroundColor: '#524f7a'
     },
     headerSection: {
     	flex: 1, 

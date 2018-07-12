@@ -7,11 +7,11 @@ class TrainListScroller extends React.Component {
 		scrollViewHeight: null
 	}
 
-	//All of the 10s in parseInt are radixes, they say that we're parsing a base 10 int
+	//All of the 10s in parseInt are radixes, ie they specify that we're parsing a base 10 int
 	sortTrains(trains) {
 		trains.sort((train1, train2) => {
-			var train1ETA = parseInt(parseInt(train1.minutes.trim(), 10) + parseInt(train1.delay.trim(), 10), 10); 
-			var train2ETA =	parseInt(parseInt(train2.minutes.trim(), 10) + parseInt(train2.delay.trim(), 10), 10);
+			var train1ETA = parseInt(parseInt(train1.minutes.trim(), 10) + Math.floor(parseInt(train1.delay.trim(), 10), 10) / 60); 
+			var train2ETA =	parseInt(parseInt(train2.minutes.trim(), 10) + Math.floor(parseInt(train2.delay.trim(), 10), 10) / 60);
 			if(isNaN(parseInt(train1ETA, 10))) { //1 is 'leaving' so it goes first
 		      	return -1;
 		    } else if(isNaN(parseInt(train2ETA, 10))) { //2 'leaving'
@@ -36,7 +36,7 @@ class TrainListScroller extends React.Component {
 		const scrollViewHeight = this.state.scrollViewHeight;
         return (
             <View style={styles.traintainer} onLayout={this.handleLayout.bind(this)}>
-	            <ScrollView >
+	            <ScrollView showsVerticalScrollIndicator={false}>
 	        		{trains.map((train, index) =>
 				        <TrainPanel
 				          	key={index}
@@ -56,7 +56,9 @@ class TrainListScroller extends React.Component {
 
 const styles = StyleSheet.create({
 	traintainer: {
-		flex: 1
+		flex: 1,
+		marginLeft: 4,
+		marginRight: 4
 	}
 });
 
