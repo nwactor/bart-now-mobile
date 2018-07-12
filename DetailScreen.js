@@ -5,6 +5,7 @@ import TrainPanel from './TrainPanel';
 import StationNames from "./static-data/StationNames";
 
 
+
 class DetailScreen extends React.Component {
 	
     injectJS() {
@@ -65,8 +66,9 @@ const styles = StyleSheet.create({
         height: '45%'
     },
     backButton: {
-        backgroundColor: "#ffffff",
-        height: '100%'
+        backgroundColor: '#ffffff',
+        height: '100%',
+        justifyContent: 'center',
     }
 });
 
