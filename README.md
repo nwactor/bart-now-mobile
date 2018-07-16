@@ -2,7 +2,7 @@
 
 Ever wish you knew how long you had to catch the train? BART Now gives commuters access to the real-time state of their favorite BART Stations at the touch of a button.
 
-Visit the web demo at https://bart-now.herokuapp.com/.
+Visit the web demo at https://bart-now.herokuapp.com/. Note: the demo may not include all features in development for the mobile app.
 
 ### Complete Features
 
@@ -19,6 +19,7 @@ Visit the web demo at https://bart-now.herokuapp.com/.
 * Polished UI
 * Loading / Logo Screen
 * Loading Indicator for train list
+* Show number of cars, bike acceptable, and plaform number on train detail page
 
 ### Known Issues
 
