@@ -16,19 +16,20 @@ class DetailScreen extends React.Component {
         travelTime:'Updating',
     }
 
-    onMessage(event) {
-        console.log(event.nativeEvent.data);
-        if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
-            this.setState({ distance: event.nativeEvent.data.split(',')[0] });
-            this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
-        }
-    }
+    // onMessage(event) {
+    //     console.log("event recieved!: ");
+    //     console.log(event.nativeEvent.data);
+    //     if (event.nativeEvent.data.split(',')[0] && event.nativeEvent.data.split(',')[1] !== undefined) {
+    //         this.setState({ distance: event.nativeEvent.data.split(',')[0] });
+    //         this.setState({ travelTime: event.nativeEvent.data.split(',')[1] });
+    //     }
+    // }
 
 	render() {
-        const injectedScript = () => {
-            window.postMessage(message, "*");
-            window.postMessage = window.originalPostMessage || window.postMessage;
-        }
+        // const injectedScript = () => {
+        //     window.postMessage(message);
+        //     window.postMessage = window.originalPostMessage || window.postMessage;
+        // }
         return (
             <View style={styles.container}>
                 <StatusBar  barStyle={"light-content"}/>
@@ -45,13 +46,14 @@ class DetailScreen extends React.Component {
                 </View>
                 <MapWebView
                     source={require('./webview/map.html')}
-                    injectedJavaScript={`(${String(injectedScript)})()`}
+                    // injectedJavaScript={`(${String(injectedScript)})()`}
                     scrollEnabled={false}
                     clientLocation={this.props.clientLocation}
                     targetStation={StationNames[this.props.station]}
                     currentTransportation={this.props.currentTransportation}
-                    onMessage={this.onMessage.bind(this)}
+                    // onMessage={this.onMessage.bind(this)}
                 />
+                {/*
                 <View style={styles.detailSection}>
                     <TrainPanel
                         destination={this.props.train.destination}
@@ -64,6 +66,7 @@ class DetailScreen extends React.Component {
                         travelTime={this.state.travelTime}
                     />
                 </View>
+                */}
                 <View style={styles.backWrapper}>
                     <TouchableOpacity 
                         style={styles.backButton}
