@@ -16,11 +16,10 @@ Note: the demo may not include all features included with and in development for
 ### Planned Features
 
 * Predictions on whether or not the user will be able to catch a selected train, based on their mode of transport to the station
-* Display more information about a train when it is selected; live countdown on detail page
+* Show number of cars, bike acceptable, plaform number, and live countdown on train detail page
 * Polished UI
 * Loading / Logo Screen
 * Loading Indicator for train list
-* Show number of cars, bike acceptable, and plaform number on train detail page
 
 ### Known Issues
 
