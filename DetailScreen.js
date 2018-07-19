@@ -46,27 +46,12 @@ class DetailScreen extends React.Component {
                 </View>
                 <MapWebView
                     source={require('./webview/map.html')}
-                    // injectedJavaScript={`(${String(injectedScript)})()`}
                     scrollEnabled={false}
                     clientLocation={this.props.clientLocation}
                     targetStation={StationNames[this.props.station]}
                     currentTransportation={this.props.currentTransportation}
-                    // onMessage={this.onMessage.bind(this)}
+                    train={this.props.train}
                 />
-                {/*
-                <View style={styles.detailSection}>
-                    <TrainPanel
-                        destination={this.props.train.destination}
-                        color={this.props.train.color}
-                        minutes={this.props.train.minutes}
-                        delay={this.props.train.delay}
-                    />
-                    <StationPanel
-                        distance={this.state.distance}
-                        travelTime={this.state.travelTime}
-                    />
-                </View>
-                */}
                 <View style={styles.backWrapper}>
                     <TouchableOpacity 
                         style={styles.backButton}
