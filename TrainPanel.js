@@ -29,21 +29,25 @@ class TrainPanel extends React.Component {
 	}
 
 	render() {
-        return (
-            <TouchableOpacity onPress={this.props.onTrainSelect ? () => this.returnSelectedTrain() : () => {}}>
-	            <View 
-	            	style={[styles.TrainPanel, {height: (this.props.scrollViewHeight ? .13 * this.props.scrollViewHeight : 50)}] }
-	            >
-	        		<View style={styles.row1}>
-								<Text style={styles.destination}>{this.props.destination}</Text>
-	        		</View>
-	        		<View style={styles.row2}>
-	        			<View style={ [styles.colorStripe, { backgroundColor: this.props.color }] }/>
-									<Text style={styles.time}>{this.getTimeRemaining()}</Text>
-	        		</View>
-	            </View>
-            </TouchableOpacity>
-        );
+        if(this.props.scrollViewHeight) {
+	        return (
+	            <TouchableOpacity onPress={this.props.onTrainSelect ? () => this.returnSelectedTrain() : () => {}}>
+		            <View 
+		            	style={[styles.TrainPanel, {height: (this.props.scrollViewHeight ? .13 * this.props.scrollViewHeight : 50)}] }
+		            >
+		        		<View style={styles.row1}>
+									<Text style={styles.destination}>{this.props.destination}</Text>
+		        		</View>
+		        		<View style={styles.row2}>
+		        			<View style={ [styles.colorStripe, { backgroundColor: this.props.color }] }/>
+										<Text style={styles.time}>{this.getTimeRemaining()}</Text>
+		        		</View>
+		            </View>
+	            </TouchableOpacity>
+	        );
+	    } else {
+	    	return (<View/>); 
+	    }
     }
 }
 
