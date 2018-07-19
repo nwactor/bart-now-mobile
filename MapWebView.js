@@ -15,7 +15,6 @@ class MapWebView extends reactNative.WebView {
 		if(this.props.targetStation !== nextProps.targetStation || 
 			this.props.currentTransportation != nextProps.currentTransportation ||
 			this.props.clientLocation !== nextProps.clientLocation) {
-				console.log("injectingJS");
 				this.injectJavaScript(`
 					clientLocation = "${nextProps.clientLocation}";
 					targetStation = "${nextProps.targetStation}";

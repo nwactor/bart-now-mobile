@@ -8,7 +8,7 @@
 	<style type="text/css">
 		html, body {
 			height: 100%;
-			
+			font-family: sans-serif;
 		}
 		#map {
 			height: 50%;
@@ -19,19 +19,45 @@
 			width: 100%;
 			background-color: #A9A9A9;
 		}
+		.info-row {
+			margin-bottom: 3.5vh;
+		}
+		.info-description {
+			font-size: 4vh; /*Calculated as a fraction of the overall webview*/
+		}
+		#distance, #eta {
+			background-color: gray;
+			color: white;
+			padding: 1%;
+			border: 2px solid black;
+			border-radius: 4px;
+		}
 	</style>
 </head>
 <body>
 	<div id="map"></div>
 	<div id="info-panel">
+		<div style="padding-left: 5%; padding-top: 5%;">
+			<div class="info-row">
+				<span class="info-description">Distance to Station: </span><span id="distance" class="info-description"></span>
+			</div>
+			<div class="info-row">
+				<span class="info-description">Estimated Travel Time: </span><span id="eta" class="info-description"></span>
+			</div>
+		</div>
 		<div class="train-panel">
-			
-		</div>
-		<div class="info-row">
-			<span>Distance to BART Station: </span><span id="distance"></span>
-		</div>
-		<div class="info-row">
-			<span>Estimated Travel Time: </span><span id="eta"></span>
+			<div>
+				<div>
+					<span id="train-name"></span>
+					<div id="train-color"></div>
+					<span id="train-eta"></span>
+				</div>
+				<div>
+					<span id="platform"></span>
+					<span id="car-number"></span>
+					<span id="bike-friendly"></span>
+				</div>
+			</div>	
 		</div>
 	</div>
 
