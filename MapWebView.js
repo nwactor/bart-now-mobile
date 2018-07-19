@@ -8,6 +8,13 @@ class MapWebView extends reactNative.WebView {
 			var clientLocation = "${this.props.clientLocation}";
 			var targetStation = "${this.props.targetStation}";
 			var currentTransportation = "${this.props.currentTransportation}";
+			var trainName = "${this.props.train.destination}";
+			var trainColor = "${this.props.train.color}";
+			var trainMinutes = "${this.props.train.minutes}";
+			var trainDelay = "${this.props.train.delay}"
+			var platform = "${this.props.train.platform}";
+			var carNumber = "${this.props.cars}";
+			var bikeFriendly = "${this.props.bike}";
 		`);
 	}
 
@@ -15,7 +22,6 @@ class MapWebView extends reactNative.WebView {
 		if(this.props.targetStation !== nextProps.targetStation || 
 			this.props.currentTransportation != nextProps.currentTransportation ||
 			this.props.clientLocation !== nextProps.clientLocation) {
-				console.log("injectingJS");
 				this.injectJavaScript(`
 					clientLocation = "${nextProps.clientLocation}";
 					targetStation = "${nextProps.targetStation}";
