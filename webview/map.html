@@ -36,7 +36,7 @@
 			background-color: #f7f8f9;
 			border: 3px solid black;
 			border-radius: 10px;
-			height: 55%;
+			height: 35%;
 			margin-right: 2%;
 			margin-left: 2%;
 		}
@@ -48,12 +48,15 @@
 <body>
 	<div id="map"></div>
 	<div id="info-panel">
-		<div style="padding-left: 5%; padding-top: 5%; height: 35%;">
+		<div style="padding-left: 5%; padding-top: 5%; height: 50%;">
 			<div class="info-row">
 				<span class="info-description">Distance to Station: </span><span id="distance" class="info-description"></span>
 			</div>
 			<div class="info-row">
 				<span class="info-description">Estimated Travel Time: </span><span id="eta" class="info-description"></span>
+			</div>
+			<div class="info-row">
+				<span class="info-description">Chance to Catch this Train:  </span><span id="chance" class="info-description"></span>
 			</div>
 		</div>
 		<div class="train-panel">
@@ -119,17 +122,32 @@
 			});
 		}
 
+		function getTimeRemaining() {
+			var minutes = trainMinutes;
+			var delay = trainDelay;
+
+			if(minutes === "Leaving") { return "Arrived"; }
+			else {
+				var totalTime = parseInt(minutes, 10) + Math.floor(parseInt(delay, 10) / 60);
+				if(totalTime <= 60) {
+					return totalTime + " min";
+				} else {
+					return Math.floor(totalTime / 60) + " hour " + (totalTime % 60) + " min";
+				}
+			}
+		}
+
 		initMap();
 		calcRoute(directionsService, directionsDisplay);
 		getDistanceToStationsFromClient(targetStation);
 
 		//Show the details of the selected train:
 		document.getElementById("train-name").innerHTML = trainName;
-		// document.getElementById("trainColor").
-		// document.getElementById("trainEta").innerHTML = ;
-		// document.getElementById("platform").innerHTML = ;
-		// document.getElementById("carNumber").innerHTML = ;
-		// document.getElementById("bikeFriendly")
+		// document.getElementById("train-color").
+		document.getElementById("train-eta").innerHTML = getTimeRemaining();
+		document.getElementById("platform").innerHTML = "Platform " + platform;
+		document.getElementById("car-number").innerHTML = carNumber + " cars";
+		// document.getElementById("bike-friendly")
 		
 
 		
