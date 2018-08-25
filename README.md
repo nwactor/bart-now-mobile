@@ -25,6 +25,6 @@ Note: the demo may not include all features included with and in development for
 
 * Departure times may need to update more frequently (actively being tested)
 * Transport Selector hidden behind the map on Android
-* Train Panel size flashes when back button is pressed
+* ~~Train Panel size flashes when back button is pressed~~ Fixed!
 * Walking directions don't load sometimes (May be on Google's end?)
 * ~~Travel time doesn't update when transportation mode changes~~ (Work-around found by expanding the webview portion of the app)
