@@ -44,7 +44,7 @@ class DetailScreen extends React.Component {
                         />
                     </View>
                 </View>
-                <MapWebView
+                <MapWebView style={styles.webview}
                     source={require('./webview/map.html')}
                     scrollEnabled={false}
                     clientLocation={this.props.clientLocation}
@@ -83,11 +83,6 @@ const styles = StyleSheet.create({
         flex: 4,
         fontSize: 20,
         textAlign: 'center'
-    },
-    detailSection: {
-       flex: 1,
-       marginLeft: 4,
-       marginRight: 4
     },
     backWrapper: {
         height: '7%', 
